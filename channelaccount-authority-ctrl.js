@@ -145,6 +145,22 @@ module.exports = function(ngModule) {
         };
 
         self.ok = function() {
+            var postarry = [];
+            angular.forEach(self.modules, function(nodelv1){
+               if(nodelv1.checked){
+                  postarry.push({modulepkey:nodelv1.modulepkey});
+               }
+               angular.forEach(nodelv1,function(nodelv2){
+                  angular.forEach(nodelv2,function(nodelv3){
+                     if(nodelv3.checked){
+                        postarry.push({
+                           modulepkey:nodelv3.modulepkey,
+                           functioncode:nodelv3.functioncode
+                        });
+                     }
+                  });                  
+               });
+            }
             $modalInstance.close();
         };
 
